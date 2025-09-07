@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@tsuro/convex": "workspace:*",
-    "@tsuro/db": "workspace:*",
     "@tsuro/ui": "workspace:*",
     "@t3-oss/env-nextjs": "^0.13.8",
     "@tabler/icons-react": "^3.34.1",

@@ -6,7 +6,7 @@ import createJiti from "jiti";
 createJiti(fileURLToPath(import.meta.url))("./src/env");
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["@tsuro/db", "@tsuro/ui"],
+  transpilePackages: ["@tsuro/ui"],
 
   webpack: (config) => {
     config.externals.push("pino-pretty", "lokijs", "encoding");
