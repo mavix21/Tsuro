@@ -16,7 +16,7 @@
   "dependencies": {
     "@coinbase/onchainkit": "1.0.0-alpha.14",
     "@farcaster/miniapp-sdk": "^0.1.8",
-    "@myapp/ui": "workspace:*",
+    "@tsuro/ui": "workspace:*",
     "@tanstack/react-query": "catalog:",
     "next": "15.5.2",
     "react": "catalog:react19",
@@ -29,8 +29,8 @@
     "@tailwindcss/postcss": "^4.1.13"
   },
   "devDependencies": {
-    "@myapp/eslint-config": "workspace:*",
-    "@myapp/tsconfig": "workspace:*",
+    "@tsuro/eslint-config": "workspace:*",
+    "@tsuro/tsconfig": "workspace:*",
     "@eslint/eslintrc": "^3",
     "@next/eslint-plugin-next": "^15.5.2",
     "@types/node": "catalog:",
@@ -42,5 +42,5 @@
     "jiti": "^1.21.7",
     "typescript": "catalog:"
   },
-  "prettier": "@myapp/prettier-config"
+  "prettier": "@tsuro/prettier-config"
 }

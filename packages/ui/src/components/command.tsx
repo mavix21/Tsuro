@@ -10,8 +10,8 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@myapp/ui/components/dialog";
-import { cn } from "@myapp/ui/lib/utils";
+} from "@tsuro/ui/components/dialog";
+import { cn } from "@tsuro/ui/lib/utils";
 
 function Command({
   className,

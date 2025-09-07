@@ -1,6 +1,6 @@
 import { IconBrandGithub, IconRocket } from "@tabler/icons-react";
 
-import { Button } from "@myapp/ui/components/button";
+import { Button } from "@tsuro/ui/components/button";
 
 import { ThemeSwitcher } from "@/shared/ui/theme-switcher";
 

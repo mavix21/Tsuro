@@ -11,10 +11,10 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@myapp/ui/components",
-    "utils": "@myapp/ui/lib/utils",
-    "hooks": "@myapp/ui/hooks",
-    "lib": "@myapp/ui/lib",
-    "ui": "@myapp/ui/components"
+    "components": "@tsuro/ui/components",
+    "utils": "@tsuro/ui/lib/utils",
+    "hooks": "@tsuro/ui/hooks",
+    "lib": "@tsuro/ui/lib",
+    "ui": "@tsuro/ui/components"
   }
 }

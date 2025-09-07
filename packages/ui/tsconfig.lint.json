@@ -1,5 +1,5 @@
 {
-  "extends": "@myapp/tsconfig/react-library.json",
+  "extends": "@tsuro/tsconfig/react-library.json",
   "compilerOptions": {
     "outDir": "dist"
   },
