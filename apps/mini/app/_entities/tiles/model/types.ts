@@ -10,6 +10,8 @@ export type PointPosition =
 
 export type MidPointPosition = "c";
 
+export type RadiusSize = "small" | "large" | "cross";
+
 interface LinePath {
   type: "line";
   start: PointPosition;
@@ -20,7 +22,7 @@ interface ArcPath {
   type: "arc";
   start: PointPosition;
   end: PointPosition;
-  radiusFactor: number;
+  radius: RadiusSize;
   sweepFlag?: 0 | 1;
 }
 
@@ -28,8 +30,8 @@ interface EllipsePath {
   type: "ellipse";
   start: PointPosition;
   end: PointPosition;
-  rxFactor: number;
-  ryFactor: number;
+  rx: RadiusSize;
+  ry: RadiusSize;
   sweepFlag?: 0 | 1;
 }
 
@@ -38,8 +40,8 @@ interface SCurvePath {
   start: PointPosition;
   end: PointPosition;
   midpoint: MidPointPosition;
-  rxFactor: number;
-  ryFactor: number;
+  rx: RadiusSize;
+  ry: RadiusSize;
 }
 
 export type PathDefinition = LinePath | ArcPath | EllipsePath | SCurvePath;
