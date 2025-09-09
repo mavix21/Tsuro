@@ -6,6 +6,7 @@
       "@/*": ["./*"],
       "@/shared/*": ["./app/_shared/*"],
       "@/pages/*": ["./app/_pages/*"],
+      "@/entities/*": ["./app/_entities/*"],
       "@tsuro/ui/*": ["../../packages/ui/src/*"]
     },
     "plugins": [
