@@ -10,7 +10,7 @@ export type PointPosition =
 
 export type MidPointPosition = "c";
 
-export type RadiusSize = "small" | "large" | "cross";
+export type RadiusSize = "offset" | "halfMinusOffset" | "cross";
 
 interface LinePath {
   type: "line";

@@ -9,9 +9,9 @@ import type {
 
 function getRadiusInPixels(size: RadiusSize, offset: number, tileSize: number) {
   switch (size) {
-    case "small":
+    case "offset":
       return offset;
-    case "large":
+    case "halfMinusOffset":
       return tileSize / 2 - offset;
     case "cross":
       return tileSize - offset;

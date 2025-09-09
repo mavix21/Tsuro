@@ -5,20 +5,44 @@ export const TILE_DEFINITIONS: TileDefinition[] = [
   {
     id: 1,
     paths: [
-      { type: "arc", start: "lt", end: "tl", radius: "small" },
-      { type: "arc", start: "tr", end: "rt", radius: "small" },
-      { type: "arc", start: "rb", end: "br", radius: "small" },
-      { type: "arc", start: "bl", end: "lb", radius: "small" },
+      { type: "arc", start: "lt", end: "tl", radius: "offset" },
+      { type: "arc", start: "tr", end: "rt", radius: "offset" },
+      { type: "arc", start: "rb", end: "br", radius: "offset" },
+      { type: "arc", start: "bl", end: "lb", radius: "offset" },
     ],
   },
-  // Four semicircles
+  // Four semi-ellipses
   {
     id: 2,
     paths: [
-      { type: "arc", start: "lb", end: "lt", radius: "large" },
-      { type: "arc", start: "tl", end: "tr", radius: "large" },
-      { type: "arc", start: "rt", end: "rb", radius: "large" },
-      { type: "arc", start: "br", end: "bl", radius: "large" },
+      {
+        type: "ellipse",
+        start: "lb",
+        end: "lt",
+        rx: "offset",
+        ry: "halfMinusOffset",
+      },
+      {
+        type: "ellipse",
+        start: "tl",
+        end: "tr",
+        rx: "halfMinusOffset",
+        ry: "offset",
+      },
+      {
+        type: "ellipse",
+        start: "rt",
+        end: "rb",
+        rx: "offset",
+        ry: "halfMinusOffset",
+      },
+      {
+        type: "ellipse",
+        start: "br",
+        end: "bl",
+        rx: "halfMinusOffset",
+        ry: "offset",
+      },
     ],
   },
   // Four larger quarter circles
@@ -39,28 +63,28 @@ export const TILE_DEFINITIONS: TileDefinition[] = [
         type: "ellipse",
         start: "lb",
         end: "tl",
-        rx: "small",
+        rx: "offset",
         ry: "cross",
       },
       {
         type: "ellipse",
         start: "bl",
         end: "lt",
-        rx: "small",
+        rx: "offset",
         ry: "cross",
       },
       {
         type: "ellipse",
         start: "tr",
         end: "rb",
-        rx: "small",
+        rx: "offset",
         ry: "cross",
       },
       {
         type: "ellipse",
         start: "rt",
         end: "br",
-        rx: "small",
+        rx: "offset",
         ry: "cross",
       },
     ],
@@ -74,7 +98,7 @@ export const TILE_DEFINITIONS: TileDefinition[] = [
         start: "lt",
         end: "tr",
         rx: "cross",
-        ry: "small",
+        ry: "offset",
       },
       { type: "line", start: "tl", end: "bl" },
       {
@@ -83,9 +107,29 @@ export const TILE_DEFINITIONS: TileDefinition[] = [
         end: "rt",
         midpoint: "c",
         rx: "cross",
-        ry: "small",
+        ry: "offset",
       },
-      { type: "arc", start: "rb", end: "br", radius: "small" },
+      { type: "arc", start: "rb", end: "br", radius: "offset" },
+    ],
+  },
+  // TBD2
+  {
+    id: 6,
+    paths: [
+      { type: "arc", start: "lt", end: "tl", radius: "offset" },
+      { type: "arc", start: "tr", end: "rt", radius: "offset" },
+      { type: "line", start: "lb", end: "rb" },
+      { type: "arc", start: "br", end: "bl", radius: "halfMinusOffset" },
+    ],
+  },
+  // TBD3
+  {
+    id: 7,
+    paths: [
+      { type: "arc", start: "lt", end: "tl", radius: "offset" },
+      { type: "arc", start: "lb", end: "tr", radius: "cross" },
+      { type: "arc", start: "rt", end: "rb", radius: "halfMinusOffset" },
+      { type: "arc", start: "br", end: "bl", radius: "halfMinusOffset" },
     ],
   },
 ];
