@@ -6,7 +6,7 @@ export default function TilePage() {
   return (
     <div className="flex flex-wrap">
       {TILE_DEFINITIONS.map((definition) => (
-        <Tile key={definition.id} size={320} definition={definition} />
+        <Tile key={definition.id} size={120} definition={definition} />
       ))}
     </div>
   );
