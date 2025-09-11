@@ -107,19 +107,110 @@ export const TILE_DEFINITIONS: TileDefinition[] = [
     ],
   },
 
-  // Four larger quarter circles
   {
     id: 7,
     paths: [
-      { type: "arc", start: "lb", end: "tr", radius: "cross" },
-      { type: "arc", start: "tl", end: "rb", radius: "cross" },
-      { type: "arc", start: "rt", end: "bl", radius: "cross" },
-      { type: "arc", start: "br", end: "lt", radius: "cross" },
+      {
+        type: "arc",
+        start: "tl",
+        end: "tr",
+        radius: "halfMinusOffset",
+      },
+      {
+        type: "s-curve",
+        start: "lt",
+        end: "rb",
+        midpoint: "c",
+        rx: "cross",
+        ry: "offset",
+        sweepFlag: 1,
+      },
+      {
+        type: "arc",
+        start: "br",
+        end: "bl",
+        radius: "halfMinusOffset",
+      },
+      {
+        type: "s-curve",
+        start: "lb",
+        end: "rt",
+        midpoint: "c",
+        rx: "cross",
+        ry: "offset",
+      },
     ],
   },
-  // Four quarter ellipses
+
   {
     id: 8,
+    paths: [
+      { type: "ellipse", start: "lb", end: "tl", rx: "offset", ry: "cross" },
+      {
+        type: "s-curve",
+        start: "lt",
+        end: "rb",
+        midpoint: "c",
+        rx: "cross",
+        ry: "offset",
+        sweepFlag: 1,
+      },
+      {
+        type: "arc",
+        start: "br",
+        end: "bl",
+        radius: "halfMinusOffset",
+      },
+      { type: "arc", start: "tr", end: "rt", radius: "offset" },
+    ],
+  },
+
+  {
+    id: 9,
+    paths: [
+      { type: "ellipse", start: "bl", end: "lt", rx: "offset", ry: "cross" },
+      {
+        type: "s-curve",
+        start: "lb",
+        end: "rt",
+        midpoint: "c",
+        rx: "cross",
+        ry: "offset",
+      },
+      {
+        type: "ellipse",
+        start: "tl",
+        end: "tr",
+        rx: "halfMinusOffset",
+        ry: "offset",
+      },
+      { type: "arc", start: "rb", end: "br", radius: "offset" },
+    ],
+  },
+
+  {
+    id: 10,
+    paths: [
+      { type: "ellipse", start: "bl", end: "lt", rx: "offset", ry: "cross" },
+      { type: "ellipse", start: "lb", end: "tl", rx: "offset", ry: "cross" },
+      { type: "arc", start: "tr", end: "rt", radius: "offset" },
+      { type: "arc", start: "rb", end: "br", radius: "offset" },
+    ],
+  },
+
+  {
+    id: 11,
+    paths: [
+      { type: "arc", start: "lb", end: "tr", radius: "cross" },
+      { type: "ellipse", start: "bl", end: "lt", rx: "offset", ry: "cross" },
+      { type: "ellipse", start: "tl", end: "rt", rx: "cross", ry: "offset" },
+      { type: "arc", start: "rb", end: "br", radius: "offset" },
+    ],
+  },
+
+  // Four quarter ellipses
+  {
+    id: 12,
     paths: [
       {
         type: "ellipse",
@@ -153,7 +244,7 @@ export const TILE_DEFINITIONS: TileDefinition[] = [
   },
   // TBD1
   {
-    id: 9,
+    id: 13,
     paths: [
       {
         type: "ellipse",
@@ -176,7 +267,7 @@ export const TILE_DEFINITIONS: TileDefinition[] = [
   },
   // TBD2
   {
-    id: 10,
+    id: 14,
     paths: [
       { type: "arc", start: "lt", end: "tl", radius: "offset" },
       { type: "arc", start: "tr", end: "rt", radius: "offset" },
@@ -186,12 +277,23 @@ export const TILE_DEFINITIONS: TileDefinition[] = [
   },
   // TBD3
   {
-    id: 11,
+    id: 15,
     paths: [
       { type: "arc", start: "lt", end: "tl", radius: "offset" },
       { type: "arc", start: "lb", end: "tr", radius: "cross" },
       { type: "arc", start: "rt", end: "rb", radius: "halfMinusOffset" },
       { type: "arc", start: "br", end: "bl", radius: "halfMinusOffset" },
+    ],
+  },
+
+  // Four larger quarter circles
+  {
+    id: 34,
+    paths: [
+      { type: "arc", start: "lb", end: "tr", radius: "cross" },
+      { type: "arc", start: "tl", end: "rb", radius: "cross" },
+      { type: "arc", start: "rt", end: "bl", radius: "cross" },
+      { type: "arc", start: "br", end: "lt", radius: "cross" },
     ],
   },
 ];
