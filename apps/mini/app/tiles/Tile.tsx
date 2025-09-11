@@ -52,9 +52,10 @@ function generatePathD(
       const mid = points[path.midpoint];
       const rx = getRadiusInPixels(path.rx, offset, size);
       const ry = getRadiusInPixels(path.ry, offset, size);
+      const sweep = path.sweepFlag ?? 0;
       // We generate two arc commands chained together
-      const firstArc = `A ${rx} ${ry} 0 0 0 ${mid.x} ${mid.y}`;
-      const secondArc = `A ${rx} ${ry} 0 0 1 ${p2.x} ${p2.y}`;
+      const firstArc = `A ${rx} ${ry} 0 0 ${sweep} ${mid.x} ${mid.y}`;
+      const secondArc = `A ${rx} ${ry} 0 0 ${sweep === 0 ? 1 : 0} ${p2.x} ${p2.y}`;
       return `M ${p1.x} ${p1.y} ${firstArc} ${secondArc}`;
     }
 
