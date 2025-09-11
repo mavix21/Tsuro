@@ -42,6 +42,7 @@ interface SCurvePath {
   midpoint: MidPointPosition;
   rx: RadiusSize;
   ry: RadiusSize;
+  sweepFlag?: 0 | 1;
 }
 
 export type PathDefinition = LinePath | ArcPath | EllipsePath | SCurvePath;
