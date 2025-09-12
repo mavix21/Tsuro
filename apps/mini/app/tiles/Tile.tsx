@@ -100,6 +100,7 @@ export function Tile({
     >
       {definition.paths.map((path, index) => (
         <path
+          id={`${definition.id}-${index}`}
           key={`${definition.id}-${index}`}
           d={generatePathD(path, points, offset, size)}
           fill="none"
