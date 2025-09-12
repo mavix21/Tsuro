@@ -4,7 +4,7 @@ import { Tile } from "./Tile";
 
 export default function TilePage() {
   return (
-    <div className="flex flex-wrap">
+    <div className="mx-auto flex max-w-3xl flex-wrap">
       {TILE_DEFINITIONS.map((definition) => (
         <Tile key={definition.id} size={120} definition={definition} />
       ))}
