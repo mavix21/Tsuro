@@ -51,27 +51,23 @@ export const doPositionsConnect = (
   pos1: PointPosition,
   pos2: PointPosition,
   direction: "horizontal" | "vertical",
-) => {
+): boolean => {
   if (direction === "horizontal") {
-    const leftTileRightPositions: PointPosition[] = ["rt", "rb"];
-    const rightTileLeftPositions: PointPosition[] = ["lt", "lb"];
-
+    const leftRightPositions: PointPosition[] = ["rt", "rb"];
+    const rightLeftPositions: PointPosition[] = ["lt", "lb"];
     return (
-      (leftTileRightPositions.includes(pos1) &&
-        rightTileLeftPositions.includes(pos2)) ||
-      (leftTileRightPositions.includes(pos2) &&
-        rightTileLeftPositions.includes(pos1))
-    );
-  } else {
-    const topTileBottomPositions: PointPosition[] = ["bl", "br"];
-    const bottomTileTopPositions: PointPosition[] = ["tl", "tr"];
-    return (
-      (topTileBottomPositions.includes(pos1) &&
-        bottomTileTopPositions.includes(pos2)) ||
-      (topTileBottomPositions.includes(pos2) &&
-        bottomTileTopPositions.includes(pos1))
+      (leftRightPositions.includes(pos1) &&
+        rightLeftPositions.includes(pos2)) ||
+      (rightLeftPositions.includes(pos1) && leftRightPositions.includes(pos2))
     );
   }
+
+  const topBottomPositions: PointPosition[] = ["bl", "br"];
+  const bottomTopPositions: PointPosition[] = ["tl", "tr"];
+  return (
+    (topBottomPositions.includes(pos1) && bottomTopPositions.includes(pos2)) ||
+    (bottomTopPositions.includes(pos1) && topBottomPositions.includes(pos2))
+  );
 };
 
 export const getDirectionMapping = (dx: number, dy: number) => {
@@ -253,8 +249,8 @@ function getRadiusInPixels(size: RadiusSize, offset: number, tileSize: number) {
 export function generatePathD(
   path: PathDefinition,
   points: Record<PointPosition | MidPointPosition, Point>,
-  offset: number,
   size: number,
+  offset: number,
 ): string {
   const p1 = points[path.start];
   const p2 = points[path.end];
@@ -295,4 +291,23 @@ export function generatePathD(
       // This should never happen with a well-defined union type
       return "";
   }
+}
+
+export function generateTilePoints(
+  size: number,
+  offset: number,
+  x = 0,
+  y = 0,
+): Record<PointPosition | MidPointPosition, Point> {
+  return {
+    lb: { x, y: y + size - offset },
+    lt: { x, y: y + offset },
+    tl: { x: x + offset, y },
+    tr: { x: x + size - offset, y },
+    rt: { x: x + size, y: y + offset },
+    rb: { x: x + size, y: y + size - offset },
+    br: { x: x + size - offset, y: y + size },
+    bl: { x: x + offset, y: y + size },
+    c: { x: size / 2, y: size / 2 },
+  };
 }

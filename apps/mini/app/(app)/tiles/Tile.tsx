@@ -1,11 +1,6 @@
-import type { Point } from "@/entities/geometry/model/types";
-import type {
-  MidPointPosition,
-  PointPosition,
-  TileDefinition,
-} from "@/entities/tiles/model/types";
+import type { TileDefinition } from "@/entities/tiles/model/types";
 
-import { generatePathD } from "../playground/utils";
+import { generatePathD, generateTilePoints } from "../playground/utils";
 
 interface TileProps {
   size?: number;
@@ -27,17 +22,7 @@ export function Tile({
   const offset = size / 3;
 
   // Add center point for s-curves
-  const points: Record<PointPosition | MidPointPosition, Point> = {
-    lb: { x, y: y + size - offset },
-    lt: { x, y: y + offset },
-    tl: { x: x + offset, y },
-    tr: { x: x + size - offset, y },
-    rt: { x: x + size, y: y + offset },
-    rb: { x: x + size, y: y + size - offset },
-    br: { x: x + size - offset, y: y + size },
-    bl: { x: x + offset, y: y + size },
-    c: { x: size / 2, y: size / 2 },
-  };
+  const points = generateTilePoints(size, offset, x, y);
 
   // The rest of the component remains the same, it's beautifully simple!
   return (
@@ -54,7 +39,7 @@ export function Tile({
           <path
             id={`${definition.id}-${index}`}
             key={`${definition.id}-${index}`}
-            d={generatePathD(path, points, offset, size)}
+            d={generatePathD(path, points, size, offset)}
             fill="none"
             stroke="hotpink"
             strokeWidth={5}

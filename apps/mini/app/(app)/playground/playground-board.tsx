@@ -8,19 +8,25 @@ import { TILE_DEFINITIONS } from "@/entities/tiles/model/definitions";
 
 import { Tile } from "../tiles/Tile";
 import { useGameBoard } from "./use-gameboard";
+import { generatePathD, generateTilePoints, getRotatedPosition } from "./utils";
 
 interface PlaygroundBoardProps {
   boardSize: number;
 }
 
 export function PlaygroundBoard({ boardSize }: PlaygroundBoardProps) {
-  const { selectedTile, selectedTileRotation, board, hoveredCell, actions } =
-    useGameBoard(boardSize);
+  const {
+    selectedTile,
+    selectedTileRotation,
+    connectedPaths,
+    board,
+    hoveredCell,
+    actions,
+  } = useGameBoard(boardSize);
 
   const renderCell = (x: number, y: number) => {
     const tile = board[y]?.[x];
     const isHovered = hoveredCell?.x === x && hoveredCell.y === y;
-    console.log({ tile });
     const canPlace = !tile && selectedTile;
 
     return (
@@ -36,6 +42,48 @@ export function PlaygroundBoard({ boardSize }: PlaygroundBoardProps) {
             onClick={() => actions.handleCellClick(x, y)}
           >
             <Tile size={80} definition={tile} rotation={tile.rotation} />
+            <div className="pointer-events-none absolute inset-0">
+              <svg
+                width={80}
+                height={80}
+                viewBox="0 0 100 100"
+                className="absolute inset-0"
+              >
+                {tile.paths.map((path, index) => {
+                  const isConnected = connectedPaths.has(`${x}-${y}-${index}`);
+                  if (!isConnected) return null;
+                  const size = 100;
+                  const offset = size / 3;
+                  const points = generateTilePoints(size, offset);
+
+                  const rotatedStart = getRotatedPosition(
+                    path.start,
+                    tile.rotation,
+                  );
+                  const rotatedEnd = getRotatedPosition(
+                    path.end,
+                    tile.rotation,
+                  );
+                  const newPath = {
+                    ...path,
+                    start: rotatedStart,
+                    end: rotatedEnd,
+                  };
+                  const pathD = generatePathD(newPath, points, size, offset);
+
+                  return (
+                    <path
+                      key={index}
+                      d={pathD}
+                      stroke="#10b981"
+                      strokeWidth="6"
+                      fill="none"
+                      opacity="0.8"
+                    />
+                  );
+                })}
+              </svg>
+            </div>
             {isHovered && (
               <div className="bg-destructive/40 absolute inset-0 flex items-center justify-center rounded-md">
                 <span className="text-destructive-foreground text-xs font-semibold">
