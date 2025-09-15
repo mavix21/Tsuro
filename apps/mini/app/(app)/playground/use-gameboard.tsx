@@ -140,6 +140,8 @@ export function useGameBoard(boardSize: number) {
       setBoard,
       setConnectedPaths,
       setHoveredCell,
+      setTokenPosition,
+      setIsTokenMoving,
       handleCellClick,
       handleTileSelect,
       handleTileRotate,
