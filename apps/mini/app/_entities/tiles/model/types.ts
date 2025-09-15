@@ -1,12 +1,6 @@
-export type PointPosition =
-  | "lb"
-  | "lt"
-  | "tl"
-  | "tr"
-  | "rt"
-  | "rb"
-  | "br"
-  | "bl";
+import type { POSITIONS } from "./constants";
+
+export type PointPosition = (typeof POSITIONS)[number];
 
 export type MidPointPosition = "c";
 
